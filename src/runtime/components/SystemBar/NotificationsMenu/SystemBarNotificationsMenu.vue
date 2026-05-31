@@ -19,7 +19,7 @@ onClickOutside(
         notificationsMenu.enabled.value = !notificationsMenu.enabled.value
       "
     >
-      <CoreTime />
+      <DesktopTime />
     </SystemBarButton>
 
     <SystemBarMenu

@@ -13,7 +13,7 @@ const workspaces = useWorkspaces()
 </script>
 
 <template>
-  <CoreDesktop
+  <DesktopCore
     v-bind="$props"
     :class="{
       'owd-desktop--overview-enabled': desktopWorkspaceStore.overview,
@@ -32,7 +32,7 @@ const workspaces = useWorkspaces()
         <Background />
 
         <DesktopContent>
-          <CoreApplicationRender
+          <DesktopApplicationRender
             :workspace-filter="workspaceId"
           />
           <slot />
@@ -46,7 +46,7 @@ const workspaces = useWorkspaces()
     >
       <DockBar />
     </div>
-  </CoreDesktop>
+  </DesktopCore>
 </template>
 
 <style lang="scss">

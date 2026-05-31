@@ -6,8 +6,8 @@ import {
   addImportsDir,
   installModule,
 } from '@nuxt/kit'
+import { defu } from 'defu'
 import { registerTailwindPath } from '@owdproject/core/runtime/utils/utilApp'
-import deepMerge from 'deepmerge'
 import {
   GNOME_EXPLORER_QUICK_ACCESS_SEED,
   GNOME_EXPLORER_SPECIAL_FOLDERS,
@@ -37,12 +37,10 @@ export default defineNuxtModule({
 
     await installModule('@owdproject/kit-theme')
 
-    nuxt.options.runtimeConfig.public ??= {}
-    nuxt.options.runtimeConfig.public.desktop ??= {}
     const themeDefaults = (await import(resolve('./desktop.config.ts'))).default
-    nuxt.options.runtimeConfig.public.desktop = deepMerge(
-      nuxt.options.runtimeConfig.public.desktop,
-      deepMerge(themeDefaults, options),
+    nuxt.options.runtimeConfig.public.desktop = defu(
+      nuxt.options.runtimeConfig.public.desktop ?? {},
+      defu(themeDefaults, options),
     )
 
     {
@@ -92,7 +90,7 @@ export default defineNuxtModule({
 
     {
       addPlugin({
-        src: resolve('./runtime/plugins/50.owd-theme-gnome-dialogs.client.ts'),
+        src: resolve('./runtime/plugins/50.desktop-theme-gnome-dialogs.client.ts'),
         mode: 'client',
       })
     }

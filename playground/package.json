@@ -10,8 +10,8 @@
   "dependencies": {
     "@owdproject/app-classic-audioplayer": "workspace:*",
     "@owdproject/core": "workspace:*",
-    "@owdproject/module-fs": "workspace:*",
-    "@owdproject/module-persistence": "workspace:*",
+    "@owdproject/module-fs": "^0.0.4",
+    "@owdproject/module-persistence": "^0.0.2",
     "@owdproject/theme-gnome": "workspace:*",
     "nuxt": "^4.4.4"
   }

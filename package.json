@@ -35,18 +35,18 @@
     "@nuxt/kit": "^4.3.0",
     "@owdproject/kit-explorer": "workspace:*",
     "@owdproject/kit-theme": "workspace:*",
-    "deepmerge": "^4.3.1",
+    "defu": "^6.1.4",
     "html2canvas": "^1.4.1",
     "vue3-carousel": "^0.15.0"
   },
   "devDependencies": {
     "@nuxt/module-builder": "^1.0.2",
-    "@owdproject/app-classic-audioplayer": "workspace:*",
     "@owdproject/core": "workspace:*",
-    "@owdproject/module-fs": "workspace:*",
-    "@owdproject/module-persistence": "workspace:*",
     "nuxt": "^4.3.0",
     "typescript": "~5.9.3"
+  },
+  "optionalDependencies": {
+    "@owdproject/app-classic-audioplayer": "^0.0.4"
   },
   "peerDependencies": {
     "@owdproject/core": "^3.2.0"
