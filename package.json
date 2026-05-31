@@ -49,6 +49,6 @@
     "@owdproject/app-classic-audioplayer": "^0.0.4"
   },
   "peerDependencies": {
-    "@owdproject/core": "^3.2.0"
+    "@owdproject/core": "^3.3.0"
   }
 }
