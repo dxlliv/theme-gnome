@@ -7,9 +7,9 @@ const props = defineProps<{
 </script>
 
 <template>
-  <Window v-bind="$props">
+  <DesktopWindow v-bind="$props">
     <iframe :src="src" />
-  </Window>
+  </DesktopWindow>
 </template>
 
 <style scoped lang="scss">

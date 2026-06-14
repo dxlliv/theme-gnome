@@ -46,6 +46,7 @@ export default defineDesktopTheme({
 
     addComponentsDir({
       path: resolve('./runtime/components'),
+      pathPrefix: false,
     })
 
     nuxt.hook('i18n:registerModule', (register) => {

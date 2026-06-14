@@ -21,7 +21,7 @@ function onWorkspaceWindowDragStart(e) {
     @dragstart="onWorkspaceWindowDragStart"
   >
     <Sheet border rounded>
-      <WindowNav>
+      <DesktopWindowNav>
         <template v-slot:prepend>
           <slot name="nav-prepend" />
         </template>
@@ -29,11 +29,11 @@ function onWorkspaceWindowDragStart(e) {
         <template v-slot:append>
           <slot name="nav-append" />
         </template>
-      </WindowNav>
+      </DesktopWindowNav>
 
-      <WindowContent>
+      <DesktopWindowContent>
         <slot />
-      </WindowContent>
+      </DesktopWindowContent>
     </Sheet>
   </DesktopCoreWindow>
 </template>
