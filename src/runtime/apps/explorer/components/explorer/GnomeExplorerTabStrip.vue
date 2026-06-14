@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import ExplorerTabStripBase from '@owdproject/kit-explorer/runtime/components/explorer/ExplorerTabStripBase.vue'
+import ExplorerTabStripBase from '@owdproject/kit-primevue/runtime/components/explorer/TabStripBase.vue'
 import { useI18n } from 'vue-i18n'
 
 defineProps<{

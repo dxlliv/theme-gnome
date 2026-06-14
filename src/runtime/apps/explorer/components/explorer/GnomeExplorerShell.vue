@@ -1,10 +1,9 @@
 <script setup lang="ts">
 import type { IWindowController, WindowConfig } from '@owdproject/core'
-import { useExplorerTabs } from '@owdproject/kit-explorer/runtime/composables/useExplorerTabs'
+import { useExplorerTabs } from '@owdproject/module-fs/runtime/composables/useExplorerTabs'
 import type { MenuItem } from 'primevue/menuitem'
-import { useFileSystemExplorer } from '@owdproject/module-fs/runtime/composables/useFileSystemExplorer'
-import createExplorerFsOperations from '@owdproject/kit-fs/runtime/composables/useExplorerFsOperations'
-import Frame from '@owdproject/kit-fs/runtime/components/explorer/Frame.vue'
+import { useExplorerWindow } from '@owdproject/module-fs/runtime/composables/useExplorerWindow'
+import Frame from '@owdproject/kit-primevue/runtime/components/explorer/Frame.vue'
 import GnomeExplorerHeaderBar from './GnomeExplorerHeaderBar.vue'
 import GnomeExplorerMainPane from './GnomeExplorerMainPane.vue'
 import GnomeExplorerTabStrip from './GnomeExplorerTabStrip.vue'
@@ -20,9 +19,8 @@ const props = defineProps<{
 
 const { t } = useI18n()
 
-const fsExplorer = useFileSystemExplorer(
+const fsExplorer = useExplorerWindow(
   props.window,
-  createExplorerFsOperations,
   t,
 )
 

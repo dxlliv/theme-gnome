@@ -1,5 +1,5 @@
 import type { IWindowController } from '@owdproject/core'
-import { useExplorerTabs } from '@owdproject/kit-explorer/runtime/composables/useExplorerTabs'
+import { useExplorerTabs } from '@owdproject/module-fs/runtime/composables/useExplorerTabs'
 
 type FsExplorerLike = Parameters<typeof useExplorerTabs>[1]
 

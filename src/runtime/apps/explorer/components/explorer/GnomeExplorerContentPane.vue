@@ -6,7 +6,7 @@ import GnomeExplorerFileIcon from './GnomeExplorerFileIcon.vue'
 import { openVfsFile } from '@owdproject/module-fs/runtime/utils/utilFsOpenFile'
 import type { useGnomeExplorerPlaces } from '../../composables/useGnomeExplorerPlaces'
 import { computed, inject } from 'vue'
-import { explorerEntryAbsolutePath } from '@owdproject/core/runtime/utils/explorerEntryPath'
+import { explorerEntryAbsolutePath } from '@owdproject/module-fs/runtime/utils/utilExplorerEntryPath'
 
 const props = defineProps<{
   window: IWindowController

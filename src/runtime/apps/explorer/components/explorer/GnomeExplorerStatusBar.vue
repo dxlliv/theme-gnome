@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import type { IWindowController } from '@owdproject/core'
-import ExplorerViewModeSwitch from '@owdproject/kit-explorer/runtime/components/explorer/ExplorerViewModeSwitch.vue'
+import ExplorerViewModeSwitch from '@owdproject/kit-primevue/runtime/components/explorer/ViewModeSwitch.vue'
 
 defineProps<{
   count: number

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import ExplorerChromeBandBase from '@owdproject/kit-explorer/runtime/components/explorer/ExplorerChromeBandBase.vue'
+import ExplorerChromeBandBase from '@owdproject/kit-primevue/runtime/components/explorer/ChromeBandBase.vue'
 import GnomeExplorerBreadcrumbBar from './GnomeExplorerBreadcrumbBar.vue'
 import GnomeExplorerNavRow from './GnomeExplorerNavRow.vue'
 

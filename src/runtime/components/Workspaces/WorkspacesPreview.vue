@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { captureElementToCanvas } from '@owdproject/core/runtime/utils/captureElementToCanvas'
+import { captureElementToCanvas } from '@owdproject/core/runtime/utils/utilCaptureElementToCanvas'
 import { useDesktopWorkspaceStore } from '@owdproject/core/runtime/stores/storeDesktopWorkspace'
 import { ref, onMounted, watch } from 'vue'
 

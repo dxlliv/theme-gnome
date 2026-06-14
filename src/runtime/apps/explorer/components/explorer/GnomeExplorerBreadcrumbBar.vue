@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import ExplorerBreadcrumbBase from '@owdproject/kit-explorer/runtime/components/explorer/ExplorerBreadcrumbBase.vue'
+import ExplorerBreadcrumbBase from '@owdproject/kit-primevue/runtime/components/explorer/BreadcrumbBase.vue'
 import { useI18n } from 'vue-i18n'
 
 const props = defineProps<{
