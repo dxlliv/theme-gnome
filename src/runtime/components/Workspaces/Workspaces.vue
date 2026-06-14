@@ -35,7 +35,7 @@ function onWorkspaceClick(workspaceId: string) {
       :items-to-show="1"
       snap-align="start"
       :mouse-drag="false"
-      :enabled="workspaces?.enabled"
+      :enabled="workspaces?.enabled.value"
       :mouse-wheel="desktopWorkspaceStore.overview"
       :touch-drag="desktopWorkspaceStore.overview"
       @keydown.stop

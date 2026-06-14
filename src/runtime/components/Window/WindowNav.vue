@@ -23,7 +23,7 @@ function onWindowNavDestroy() {
 </script>
 
 <template>
-  <DesktopWindowNav @dblclick="onWindowMaximize">
+  <DesktopCoreWindowNav @dblclick="onWindowMaximize">
     <div
       v-if="$slots.prepend"
       class="owd-window-nav__btn-group owd-window-nav__btn-group--append"
@@ -46,7 +46,7 @@ function onWindowNavDestroy() {
         @click="onWindowNavDestroy"
       />
     </div>
-  </DesktopWindowNav>
+  </DesktopCoreWindowNav>
 </template>
 
 <style scoped lang="scss">

@@ -14,7 +14,7 @@ function onWorkspaceWindowDragStart(e) {
 </script>
 
 <template>
-  <DesktopWindow
+  <DesktopCoreWindow
     v-bind="$props"
     v-show="window?.state?.active ?? true"
     :draggable="desktopWorkspaceStore.overview ? 'true' : 'false'"
@@ -35,7 +35,7 @@ function onWorkspaceWindowDragStart(e) {
         <slot />
       </WindowContent>
     </Sheet>
-  </DesktopWindow>
+  </DesktopCoreWindow>
 </template>
 
 <style scoped lang="scss">

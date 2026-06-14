@@ -1,3 +1,3 @@
 <template>
-  <DesktopBackground />
+  <DesktopCoreBackground />
 </template>

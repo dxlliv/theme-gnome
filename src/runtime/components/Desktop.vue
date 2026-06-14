@@ -19,20 +19,20 @@ const workspaces = useWorkspaces()
       'owd-desktop--overview-enabled': desktopWorkspaceStore.overview,
     }"
   >
-    <SystemBar v-if="systemBar?.enabled" />
+    <SystemBar v-if="systemBar?.enabled.value" />
 
     <div class="owd-desktop__search">
       <input placeholder="Type to search" />
     </div>
 
-    <WorkspacesPreview v-if="workspaces?.enabled" />
+    <WorkspacesPreview v-if="workspaces?.enabled.value" />
 
     <Workspaces>
       <template v-slot="{ workspaceId }">
         <Background />
 
         <DesktopContent>
-          <DesktopApplicationRender
+          <DesktopCoreApplicationRender
             :workspace-filter="workspaceId"
           />
           <slot />
@@ -41,7 +41,7 @@ const workspaces = useWorkspaces()
     </Workspaces>
 
     <div
-      v-if="workspaces?.enabled"
+      v-if="workspaces?.enabled.value"
       class="owd-desktop__dock-bar"
     >
       <DockBar />

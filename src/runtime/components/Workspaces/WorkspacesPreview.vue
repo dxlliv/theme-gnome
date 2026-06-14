@@ -33,10 +33,13 @@ function onWorkspacePreviewClick(workspaceId: string) {
 
 watch(
   () => desktopWorkspaceStore.overview,
-  (val) => {
+  async (val) => {
     if (!val) {
       previewEnabled.value = false
     } else {
+      for (const workspaceId of desktopWorkspaceStore.list) {
+        await generateDesktopWorkspacePreview(workspaceId)
+      }
       setTimeout(() => (previewEnabled.value = true), 200)
     }
   },
