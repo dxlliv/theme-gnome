@@ -11,7 +11,7 @@
   height: 23px;
   padding: 0 8px;
   font-weight: bold;
-  font-size: 15px;
+  font-size: 16px;
   background: none;
 
   &-rounded {

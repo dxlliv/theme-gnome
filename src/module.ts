@@ -6,7 +6,7 @@ import {
   installModule,
 } from '@nuxt/kit'
 import { defineDesktopTheme } from '@owdproject/core'
-import { registerThemeTailwindPath } from '@owdproject/kit-primevue/kit/registerTailwindPath'
+import { registerThemeTailwindPath } from '@owdproject/kit-tailwind/kit/registerTailwindPath'
 import {
   GNOME_EXPLORER_QUICK_ACCESS_SEED,
   GNOME_EXPLORER_SPECIAL_FOLDERS,
