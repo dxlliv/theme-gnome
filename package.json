@@ -13,17 +13,24 @@
     ".": {
       "types": "./dist/types.d.mts",
       "development": "./src/module.ts",
-      "import": "./dist/module.mjs"
+      "import": "./dist/module.mjs",
+      "default": "./dist/module.mjs"
     }
   },
   "main": "./dist/module.mjs",
   "typesVersions": {
     "*": {
-      ".": ["./dist/types.d.mts"]
+      ".": [
+        "./dist/types.d.mts"
+      ]
     }
   },
-  "files": ["dist"],
-  "nx": { "name": "theme-gnome" },
+  "files": [
+    "dist"
+  ],
+  "nx": {
+    "name": "theme-gnome"
+  },
   "scripts": {
     "prepack": "nuxt-module-build build",
     "dev": "pnpm run dev:prepare && cd playground && pnpm exec nuxt dev",
