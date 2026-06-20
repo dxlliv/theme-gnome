@@ -2,6 +2,7 @@
 import { useDesktopWorkspaceStore } from '@owdproject/core/runtime/stores/storeDesktopWorkspace'
 import { useSystemBar } from '../composables/useSystemBar'
 import { useWorkspaces } from '../composables/useWorkspaces'
+import GnomeConfirmDialogs from './GnomeConfirmDialogs.vue'
 
 const props = defineProps<{
   systemBar?: DesktopSystemBarConfig
@@ -46,6 +47,8 @@ const workspaces = useWorkspaces()
     >
       <DockBar />
     </div>
+
+    <GnomeConfirmDialogs />
   </DesktopCore>
 </template>
 

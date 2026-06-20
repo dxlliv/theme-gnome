@@ -42,6 +42,7 @@ export default defineDesktopTheme({
     const { resolve } = createResolver(import.meta.url)
 
     await installModule('@owdproject/kit-primevue')
+
     registerThemeTailwindPath(nuxt, import.meta.url)
 
     addComponentsDir({
@@ -67,11 +68,6 @@ export default defineDesktopTheme({
     addImportsDir(resolve('./runtime/consts'))
     addImportsDir(resolve('./runtime/stores'))
     addImportsDir(resolve('./runtime/utils'))
-
-    addPlugin({
-      src: resolve('./runtime/plugins/50.desktop-theme-gnome-dialogs.client.ts'),
-      mode: 'client',
-    })
 
     if (nuxt.options.modules.includes('@owdproject/module-fs')) {
       addPlugin({
