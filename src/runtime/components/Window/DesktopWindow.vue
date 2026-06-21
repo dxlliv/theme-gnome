@@ -22,11 +22,13 @@ function onWorkspaceWindowDragStart(e) {
   >
     <Sheet border rounded>
       <DesktopWindowNav>
-        <template v-slot:prepend>
+        <template #prepend>
           <slot name="nav-prepend" />
         </template>
-
-        <template v-slot:append>
+        <template v-if="$slots['nav-title']" #title>
+          <slot name="nav-title" />
+        </template>
+        <template #append>
           <slot name="nav-append" />
         </template>
       </DesktopWindowNav>

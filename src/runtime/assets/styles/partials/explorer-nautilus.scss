@@ -43,9 +43,49 @@
         background: var(--gnome-explorer-titlebar-bg) !important;
       }
 
+      .owd-window-nav__btn-group--append {
+        align-self: center;
+        margin-left: auto;
+      }
+
+      .owd-window-nav__btn-group--append-inner {
+        display: flex;
+        align-items: center;
+        gap: 4px;
+      }
+
       .owd-window-nav__title-inner {
         font-weight: 700;
         font-size: 13px;
+      }
+
+      .owd-window-nav__button {
+        background: rgba(255, 255, 255, 0.05);
+
+        :deep(.iconify),
+        :deep(svg) {
+          opacity: 0.5;
+          color: rgba(255, 255, 255, 0.92);
+        }
+
+        &:hover {
+          background: rgba(255, 255, 255, 0.12);
+
+          :deep(.iconify),
+          :deep(svg) {
+            opacity: 0.85;
+          }
+        }
+
+        &--close:hover {
+          background: #c01c28;
+
+          :deep(.iconify),
+          :deep(svg) {
+            opacity: 1;
+            color: #fff;
+          }
+        }
       }
     }
 

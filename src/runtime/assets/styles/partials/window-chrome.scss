@@ -1,50 +1,80 @@
 /*
- * GNOME Adwaita window caption buttons (circular controls in header bar).
+ * GNOME Adwaita window caption (generic app windows on Sheet chrome).
+ * Explorer uses `.gnome-explorer-frame` overrides in explorer-nautilus.scss.
  */
-.owd-desktop--gnome .owd-window-nav {
-  .owd-window-nav__btn-group--append {
-    align-self: center;
-  }
-
-  .owd-window-nav__btn-group--append-inner {
+.owd-desktop--gnome .owd-window.resizable-component:not(.gnome-explorer-frame) {
+  > .owd-sheet .owd-window-nav {
     display: flex;
     align-items: center;
-  }
+    flex-shrink: 0;
+    width: 100%;
+    height: 35px;
+    min-height: 35px;
+    line-height: 35px;
+    font-weight: bold;
+    color: rgba(255, 255, 255, 0.92);
+    background: #353535;
+    box-shadow:
+      inset 0 1px 0 0 #383838,
+      0 1px 0 0 #202020;
+    border-radius: var(--p-window-border-radius) var(--p-window-border-radius) 0 0;
+    text-align: center;
 
-  .owd-window-nav__button {
-    background: rgba(255, 255, 255, 0.05);
-
-    :deep(.iconify),
-    :deep(svg) {
-      opacity: 0.5;
-      color: rgba(255, 255, 255, 0.92);
+    &.owd-window-nav--focused {
+      background: linear-gradient(to bottom, #2b2b2b, #262626);
+      box-shadow:
+        inset 0 1px 0 0 #383838,
+        0 1px 0 0 #070707;
     }
 
-    &:hover {
-      background: rgba(255, 255, 255, 0.12);
+    .owd-window-nav__title-inner {
+      color: inherit;
+    }
+
+    .owd-window-nav__btn-group--append {
+      align-self: center;
+    }
+
+    .owd-window-nav__btn-group--append-inner {
+      display: flex;
+      align-items: center;
+    }
+
+    .owd-window-nav__button {
+      background: rgba(255, 255, 255, 0.05);
 
       :deep(.iconify),
       :deep(svg) {
-        opacity: 0.85;
+        opacity: 0.5;
+        color: rgba(255, 255, 255, 0.92);
       }
-    }
 
-    &:active {
-      background: rgba(255, 255, 255, 0.08);
-    }
+      &:hover {
+        background: rgba(255, 255, 255, 0.12);
 
-    &--close:hover {
-      background: #c01c28;
-
-      :deep(.iconify),
-      :deep(svg) {
-        opacity: 1;
-        color: #fff;
+        :deep(.iconify),
+        :deep(svg) {
+          opacity: 0.85;
+        }
       }
-    }
 
-    &--close:active {
-      background: #a51d2d;
+      &:active {
+        background: rgba(255, 255, 255, 0.08);
+      }
+
+      &--close:hover {
+        background: #c01c28;
+
+        :deep(.iconify),
+        :deep(svg) {
+          opacity: 1;
+          color: #fff;
+        }
+      }
+
+      &--close:active {
+        background: #a51d2d;
+      }
     }
   }
 }
