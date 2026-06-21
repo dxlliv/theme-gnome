@@ -11,6 +11,7 @@ import {
   GNOME_EXPLORER_QUICK_ACCESS_SEED,
   GNOME_EXPLORER_SPECIAL_FOLDERS,
 } from './runtime/apps/explorer/explorerNav.defaults'
+import { hasModuleFs } from './runtime/utils/hasModuleFs'
 
 export default defineDesktopTheme({
   meta: {
@@ -66,10 +67,9 @@ export default defineDesktopTheme({
 
     addImportsDir(resolve('./runtime/composables'))
     addImportsDir(resolve('./runtime/consts'))
-    addImportsDir(resolve('./runtime/stores'))
     addImportsDir(resolve('./runtime/utils'))
 
-    if (nuxt.options.modules.includes('@owdproject/module-fs')) {
+    if (hasModuleFs(nuxt)) {
       addPlugin({
         src: resolve('./runtime/apps/explorer/plugin.ts'),
         mode: 'client',

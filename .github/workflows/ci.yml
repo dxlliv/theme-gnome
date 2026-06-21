@@ -1,18 +1,15 @@
-name: Deploy playground to GitHub Pages
+name: ci
 
 on:
   push:
     branches:
       - main
-  workflow_dispatch:
-
-permissions:
-  contents: read
-  pages: write
-  id-token: write
+  pull_request:
+    branches:
+      - main
 
 concurrency:
-  group: pages
+  group: ci-${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
@@ -129,24 +126,18 @@ jobs:
         working-directory: client/themes/theme-gnome
         run: pnpm run dev:prepare
 
-      - name: Generate static playground
+      - name: Validate module layout
+        working-directory: client/themes/theme-gnome
+        run: pnpm run validate
+
+      - name: Generate playground (static)
         working-directory: client/themes/theme-gnome
         run: pnpm run dev:generate
         env:
           NUXT_APP_BASE_URL: /theme-gnome/
 
-      - name: Upload Pages artifact
-        uses: actions/upload-pages-artifact@v3
+      - name: Upload playground artifact
+        uses: actions/upload-artifact@v4
         with:
+          name: playground-dist
           path: client/themes/theme-gnome/playground/.output/public
-
-  deploy:
-    needs: build
-    runs-on: ubuntu-latest
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    steps:
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4

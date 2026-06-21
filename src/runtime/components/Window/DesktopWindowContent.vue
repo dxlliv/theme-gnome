@@ -1,20 +1,24 @@
 <template>
   <DesktopCoreWindowContent>
-    <slot />
+    <div class="desktop-window-body">
+      <slot />
+    </div>
   </DesktopCoreWindowContent>
 </template>
 
 <style scoped lang="scss">
-.owd-window__content {
-  display: block;
-  flex: 1;
+:deep(.owd-window__content) {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
 
-  &--centered {
-    align-content: center;
-  }
-
-  &--padded {
-    padding: 16px;
-  }
+.desktop-window-body {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  min-height: 0;
+  height: 100%;
 }
 </style>

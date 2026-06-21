@@ -1,13 +1,5 @@
-<script setup lang="ts"></script>
-
 <template>
-  <ButtonWindowNav>
-    <Icon name="mdi:remove" />
-  </ButtonWindowNav>
+  <DesktopWindowNavButton title="Close" class="owd-window-nav__button--close">
+    <Icon name="mdi:close" :size="14" />
+  </DesktopWindowNavButton>
 </template>
-
-<style scoped lang="scss">
-.iconify {
-  margin-left: -0.5px;
-}
-</style>

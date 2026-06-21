@@ -1,0 +1,50 @@
+/*
+ * GNOME Adwaita window caption buttons (circular controls in header bar).
+ */
+.owd-desktop--gnome .owd-window-nav {
+  .owd-window-nav__btn-group--append {
+    align-self: center;
+  }
+
+  .owd-window-nav__btn-group--append-inner {
+    display: flex;
+    align-items: center;
+  }
+
+  .owd-window-nav__button {
+    background: rgba(255, 255, 255, 0.05);
+
+    :deep(.iconify),
+    :deep(svg) {
+      opacity: 0.5;
+      color: rgba(255, 255, 255, 0.92);
+    }
+
+    &:hover {
+      background: rgba(255, 255, 255, 0.12);
+
+      :deep(.iconify),
+      :deep(svg) {
+        opacity: 0.85;
+      }
+    }
+
+    &:active {
+      background: rgba(255, 255, 255, 0.08);
+    }
+
+    &--close:hover {
+      background: #c01c28;
+
+      :deep(.iconify),
+      :deep(svg) {
+        opacity: 1;
+        color: #fff;
+      }
+    }
+
+    &--close:active {
+      background: #a51d2d;
+    }
+  }
+}
