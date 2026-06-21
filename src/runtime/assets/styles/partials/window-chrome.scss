@@ -38,9 +38,11 @@
     .owd-window-nav__btn-group--append-inner {
       display: flex;
       align-items: center;
+      pointer-events: auto;
     }
 
     .owd-window-nav__button {
+      pointer-events: auto;
       background: rgba(255, 255, 255, 0.05);
 
       :deep(.iconify),

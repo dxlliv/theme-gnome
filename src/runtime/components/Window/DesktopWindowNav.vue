@@ -101,6 +101,7 @@ function onWindowClose() {
   margin: 0;
   padding: 0;
   border: 0;
+  pointer-events: auto;
 }
 
 .owd-window-nav__icon {

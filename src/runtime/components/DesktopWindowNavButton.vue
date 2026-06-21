@@ -1,7 +1,10 @@
 <script setup lang="ts">
+defineOptions({ inheritAttrs: false })
+
 defineProps<{
   title?: string
   disabled?: boolean
+  rounded?: boolean
 }>()
 </script>
 
@@ -9,6 +12,8 @@ defineProps<{
   <button
     type="button"
     class="owd-window-nav__button"
+    :class="{ 'owd-window-nav__button--rounded': rounded }"
+    v-bind="$attrs"
     :title="title"
     :aria-label="title"
     :disabled="disabled"
@@ -22,10 +27,12 @@ defineProps<{
 /* Sizing only — colors/hover in window-chrome.scss */
 .owd-window-nav__button {
   position: relative;
+  z-index: 1;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
+  box-sizing: border-box;
   width: 23px;
   height: 23px;
   margin: 0;
@@ -35,6 +42,11 @@ defineProps<{
   background: transparent;
   color: inherit;
   cursor: pointer;
+  pointer-events: auto;
+
+  &--rounded {
+    border-radius: 50%;
+  }
 
   &:disabled {
     opacity: 0.45;
