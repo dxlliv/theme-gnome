@@ -1,5 +1,7 @@
 <script setup lang="ts">
+import { ref } from 'vue'
 import { useDesktopWorkspaceStore } from '@owdproject/core/runtime/stores/storeDesktopWorkspace'
+import { useDesktopWorkArea } from '@owdproject/core/runtime/composables/useDesktopWorkArea'
 import { useSystemBar } from '../composables/useSystemBar'
 import { useWorkspaces } from '../composables/useWorkspaces'
 import GnomeConfirmDialogs from './GnomeConfirmDialogs.vue'
@@ -11,6 +13,9 @@ const props = defineProps<{
 const desktopWorkspaceStore = useDesktopWorkspaceStore()
 const systemBar = useSystemBar()
 const workspaces = useWorkspaces()
+
+const shellStageRef = ref<HTMLElement | null>(null)
+useDesktopWorkArea(shellStageRef)
 </script>
 
 <template>
@@ -26,20 +31,22 @@ const workspaces = useWorkspaces()
       <input placeholder="Type to search" />
     </div>
 
-    <WorkspacesPreview v-if="workspaces?.enabled.value" />
+    <div ref="shellStageRef" class="owd-desktop__shell-stage">
+      <WorkspacesPreview v-if="workspaces?.enabled.value" />
 
-    <Workspaces>
-      <template v-slot="{ workspaceId }">
-        <Background />
+      <Workspaces>
+        <template v-slot="{ workspaceId }">
+          <Background />
 
-        <DesktopContent>
-          <DesktopCoreApplicationRender
-            :workspace-filter="workspaceId"
-          />
-          <slot />
-        </DesktopContent>
-      </template>
-    </Workspaces>
+          <DesktopContent>
+            <DesktopCoreApplicationRender
+              :workspace-filter="workspaceId"
+            />
+            <slot />
+          </DesktopContent>
+        </template>
+      </Workspaces>
+    </div>
 
     <div
       v-if="workspaces?.enabled.value"
@@ -92,6 +99,15 @@ const workspaces = useWorkspaces()
   &__workspace-previews {
     flex: 0;
     padding: 12px 0;
+  }
+
+  &__shell-stage {
+    flex: 1;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    position: relative;
   }
 
   &__workspace-container {

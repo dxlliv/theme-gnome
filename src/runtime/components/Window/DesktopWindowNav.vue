@@ -1,13 +1,14 @@
 <script setup lang="ts">
-import { inject } from 'vue'
+import { computed, inject } from 'vue'
 import type { IWindowController } from '@owdproject/core'
 import { useToggleWindowMaximize } from '@owdproject/core/runtime/composables/useToggleWindowMaximize'
-import ButtonWindowNavMinimize from '../Button/ButtonWindowNavMinimize.vue'
-import ButtonWindowNavMaximize from '../Button/ButtonWindowNavMaximize.vue'
-import ButtonWindowNavClose from '../Button/ButtonWindowNavClose.vue'
 
 const windowController = inject<IWindowController>('windowController')
 const toggleWindowMaximize = useToggleWindowMaximize()
+
+const maximizeIcon = computed(() =>
+  windowController?.isMaximized ? 'mdi:window-restore' : 'mdi:window-maximize',
+)
 
 function onWindowMinimize() {
   if (!windowController?.instanced) return
@@ -37,12 +38,8 @@ function onWindowClose() {
     <template v-if="$slots.title">
       <slot name="title" />
     </template>
-    <template v-else>
-      <div v-if="windowController?.icon" class="owd-window-nav__icon">
-        <Icon :name="windowController.icon" size="16" />
-      </div>
-
-      <div v-if="windowController?.windowTitle" class="owd-window-nav__title">
+    <template v-else-if="windowController?.windowTitle">
+      <div class="owd-window-nav__title">
         <div
           class="owd-window-nav__title-inner truncate"
           v-text="windowController.windowTitle"
@@ -58,21 +55,35 @@ function onWindowClose() {
         <slot name="append" />
       </div>
 
-      <ButtonWindowNavMinimize
+      <DesktopWindowNavButton
         v-if="!windowController?.instanced || windowController?.isMinimizable"
+        title="Minimize"
+        class="owd-window-nav__button--minimize"
         @mousedown.stop
         @click.stop="onWindowMinimize"
-      />
-      <ButtonWindowNavMaximize
+      >
+        <Icon name="mdi:minus" :size="14" />
+      </DesktopWindowNavButton>
+
+      <DesktopWindowNavButton
         v-if="windowController?.isMaximizable"
+        title="Maximize"
+        class="owd-window-nav__button--maximize"
         @mousedown.stop
         @click.stop="onWindowMaximize"
-      />
-      <ButtonWindowNavClose
+      >
+        <Icon :name="maximizeIcon" :size="12" />
+      </DesktopWindowNavButton>
+
+      <DesktopWindowNavButton
         v-if="!windowController?.instanced || windowController?.isDestroyable"
+        title="Close"
+        class="owd-window-nav__button--close"
         @mousedown.stop
         @click.stop="onWindowClose"
-      />
+      >
+        <Icon name="mdi:close" :size="14" />
+      </DesktopWindowNavButton>
     </div>
   </DesktopCoreWindowNav>
 </template>
@@ -104,22 +115,14 @@ function onWindowClose() {
   pointer-events: auto;
 }
 
-.owd-window-nav__icon {
+.owd-window-nav__title {
+  position: absolute;
+  inset: 0;
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-shrink: 0;
-  width: 2rem;
-  padding-left: 4px;
-  opacity: 0.85;
-}
-
-.owd-window-nav__title {
-  display: flex;
-  align-items: center;
-  flex: 1 1 auto;
-  min-width: 0;
-  padding: 0 8px;
+  pointer-events: none;
+  padding: 0 96px;
   text-align: center;
 }
 
