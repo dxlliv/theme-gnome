@@ -4,7 +4,9 @@ import { useDesktopWorkspaceStore } from '@owdproject/core/runtime/stores/storeD
 import { useDesktopWorkArea } from '@owdproject/core/runtime/composables/useDesktopWorkArea'
 import { useSystemBar } from '../composables/useSystemBar'
 import { useWorkspaces } from '../composables/useWorkspaces'
+import { useGnomeLauncher } from '../composables/useGnomeLauncher'
 import GnomeConfirmDialogs from './GnomeConfirmDialogs.vue'
+import GnomeLauncherOverlay from './GnomeLauncherOverlay.vue'
 
 const props = defineProps<{
   systemBar?: DesktopSystemBarConfig
@@ -13,6 +15,23 @@ const props = defineProps<{
 const desktopWorkspaceStore = useDesktopWorkspaceStore()
 const systemBar = useSystemBar()
 const workspaces = useWorkspaces()
+const { open: launcherOpen, searchQuery: launcherSearchQuery } = useGnomeLauncher()
+
+const overviewSearchQuery = ref('')
+
+function onOverviewSearchInput() {
+  if (overviewSearchQuery.value) {
+    launcherSearchQuery.value = overviewSearchQuery.value
+    launcherOpen.value = true
+    overviewSearchQuery.value = ''
+    desktopWorkspaceStore.setOverview(false)
+  }
+}
+
+function onOverviewSearchFocus() {
+  launcherOpen.value = true
+  desktopWorkspaceStore.setOverview(false)
+}
 
 const shellStageRef = ref<HTMLElement | null>(null)
 useDesktopWorkArea(shellStageRef)
@@ -28,7 +47,12 @@ useDesktopWorkArea(shellStageRef)
     <SystemBar v-if="systemBar?.enabled.value" />
 
     <div class="owd-desktop__search">
-      <input placeholder="Type to search" />
+      <input
+        v-model="overviewSearchQuery"
+        placeholder="Type to search"
+        @focus="onOverviewSearchFocus"
+        @input="onOverviewSearchInput"
+      />
     </div>
 
     <div ref="shellStageRef" class="owd-desktop__shell-stage">
@@ -56,6 +80,7 @@ useDesktopWorkArea(shellStageRef)
     </div>
 
     <GnomeConfirmDialogs />
+    <GnomeLauncherOverlay />
   </DesktopCore>
 </template>
 

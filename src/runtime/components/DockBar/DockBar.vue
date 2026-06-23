@@ -1,10 +1,12 @@
 <script setup lang="ts">
 import { useApplicationManager } from '@owdproject/core/runtime/composables/useApplicationManager'
+import { useGnomeLauncher } from '../../composables/useGnomeLauncher'
 
 const applicationManager = useApplicationManager()
+const { toggle } = useGnomeLauncher()
 
 function onMenuClick() {
-  window.alert('not implemented yet')
+  toggle()
 }
 </script>
 

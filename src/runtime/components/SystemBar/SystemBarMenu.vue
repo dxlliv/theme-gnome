@@ -1,5 +1,5 @@
 <template>
-  <Card pt:root="p-card--border" class="owd-system-bar__menu">
+  <Card class="owd-system-bar__menu p-card--border">
     <template #content>
       <slot />
     </template>
