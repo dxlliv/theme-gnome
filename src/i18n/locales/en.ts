@@ -3,6 +3,11 @@ export default {
     applications: {
       label: 'Apps',
     },
+    notifications: {
+      title: 'Notifications',
+      clear: 'Clear',
+      empty: 'No Notifications',
+    },
   },
   applications: {
     categories: {
