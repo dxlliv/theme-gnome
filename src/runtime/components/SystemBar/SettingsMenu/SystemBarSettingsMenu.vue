@@ -29,10 +29,8 @@ onClickOutside(settingsMenuElement, () => (settingsMenu.enabled.value = false))
 
 <style lang="scss" scoped>
 .owd-system-bar__settings-menu {
-  right: var(--p-system-bar-menu-spacing);
   min-height: 200px;
   width: 400px;
   padding: 16px;
-  border-radius: 36px !important;
 }
 </style>

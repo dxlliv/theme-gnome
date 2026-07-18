@@ -1,7 +1,10 @@
 <script setup lang="ts">
 import { useBattery } from '@vueuse/core'
+import { computed } from 'vue'
 
 const { charging, chargingTime, dischargingTime, level } = useBattery()
+
+const batteryPercentage = computed(() => Math.round(level.value * 100))
 
 function getBatteryIconSimplifiedDynamic(level: number): string {
   const percentage = Math.round(level * 100)
@@ -14,7 +17,7 @@ function getBatteryIconSimplifiedDynamic(level: number): string {
 <template>
   <Button size="large" rounded>
     <Icon :name="getBatteryIconSimplifiedDynamic(level)" />
-    {{ level * 100 }}%
+    {{ batteryPercentage }}%
   </Button>
 </template>
 

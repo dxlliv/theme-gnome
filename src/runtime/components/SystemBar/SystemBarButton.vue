@@ -5,7 +5,7 @@
 </template>
 
 <style scoped lang="scss">
-.p-button {
+.owd-system-bar__button {
   display: inline-block;
   cursor: pointer;
   height: 23px;

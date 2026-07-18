@@ -18,6 +18,13 @@ watch(
     saveMasterVolumeDebounced()
   },
 )
+
+watch(
+  () => desktopVolumeStore.master,
+  (value) => {
+    volume.value = value
+  },
+)
 </script>
 
 <template>

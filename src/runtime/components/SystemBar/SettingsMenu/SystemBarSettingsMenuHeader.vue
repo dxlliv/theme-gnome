@@ -1,4 +1,22 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { useDesktopDefaultAppsStore } from '#imports'
+import { useApplicationManager } from '#imports'
+
+const defaultAppsStore = useDesktopDefaultAppsStore()
+const applicationManager = useApplicationManager()
+
+function handleAuthClick() {
+  const defaultAuthApp = defaultAppsStore.getDefaultApp('auth')
+  if (defaultAuthApp && applicationManager.isAppDefined(defaultAuthApp.applicationId)) {
+    applicationManager.launchAppEntry(
+      defaultAuthApp.applicationId,
+      defaultAuthApp.entry
+    )
+  } else {
+    console.warn('[Gnome Theme] No default auth app is registered.')
+  }
+}
+</script>
 
 <template>
   <div class="owd-system-bar__settings-menu__header">
@@ -7,7 +25,13 @@
     </div>
 
     <div>
-      <Button size="large" rounded pt:root="p-button--icon">
+      <Button 
+        size="large" 
+        rounded 
+        pt:root="p-button--icon"
+        @click="handleAuthClick"
+        title="Account Login / Verification"
+      >
         <Icon name="mdi:account-circle-outline" :size="20" />
       </Button>
       <Button size="large" rounded pt:root="p-button--icon">

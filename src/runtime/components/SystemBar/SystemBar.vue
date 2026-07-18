@@ -31,6 +31,7 @@ const classes = computed(() => {
     </div>
 
     <div class="owd-desktop__system-bar__right">
+      <SystemBarTray />
       <SystemBarSettingsMenu />
     </div>
   </div>
@@ -75,6 +76,7 @@ const classes = computed(() => {
   &__right {
     width: 20vw;
     text-align: right;
+    position: relative;
 
     .owd-system-bar__button {
       margin-left: 4px;
